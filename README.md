@@ -17,5 +17,5 @@ Here we can post potentially useful functions for us to share and collaborate. H
 
 ####Variable List
 
-  - weekdays []
-  - months []
+  - weekdays
+  - months
