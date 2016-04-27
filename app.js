@@ -159,7 +159,7 @@ function binarySearch(array = [], target, compareFunc, min, max){
   Converts a HEX string to an object of r,g,b values
 ~~~~~~~~~~~~~~~~~~ */
 
-function hexToRgb(hex) {
+function hexToRGB(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
         r: parseInt(result[1], 16),
@@ -194,7 +194,7 @@ function rgbToLuminance(obj){
 ~~~~~~~~~~~~~~~~~~~~*/
 
 function findTextColor(hex){
-  var rgb = hexToRgb(hex)
+  var rgb = hexToRGB(hex)
   var l = rgbToLuminance(rgb)
   if(l > 255/2) return 0
   return 1
