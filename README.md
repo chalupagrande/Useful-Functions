@@ -14,3 +14,8 @@ Here we can post potentially useful functions for us to share and collaborate. H
   - rgbToLuminance
   - findTextColor
   - randomNum
+
+####Variable List
+
+  - weekdays []
+  - months []
