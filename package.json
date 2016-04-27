@@ -4,7 +4,7 @@
   "description": "Here we can post potentially useful functions for us to share and collaborate. Hopefully we wont have to reinvent the wheel so much.",
   "main": "functions.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
