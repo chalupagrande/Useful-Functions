@@ -1,0 +1,32 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Useful Functions</title>
+  <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+</head>
+
+<style>
+  body{
+    font-family:Helvetica;
+  }
+</style>
+<body>
+<div id="mocha"></div>
+
+
+<script src="functions.js"></script>
+<script src="variables.js"></script>
+
+<script src="node_modules/mocha/mocha.js"></script>
+<script src="node_modules/chai/chai.js"></script>
+<script>
+  mocha.setup('bdd')
+</script>
+<script src="test/test.js"></script>
+<script>
+  (function(){
+    mocha.run()
+  })()
+</script>
+</body>
+</html>

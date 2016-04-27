@@ -2,6 +2,10 @@
 
 Here we can post potentially useful functions for us to share and collaborate. Hopefully we wont have to reinvent the wheel so much.
 
+##Getting Started
+
+  Fork -> `npm install` -> `$ gulp` -> edit -> pull request
+
 ####Function List
   - toggleClass
   - getDocHeight
@@ -11,11 +15,11 @@ Here we can post potentially useful functions for us to share and collaborate. H
   - removeSpaceMakeLowercase
   - binarySearch
   - hexToRGB
-  - rgbToLuminance
+  - rgbToLuminancegit
   - findTextColor
   - randomNum
 
 ####Variable List
 
   - weekdays
-  - months
+  - monthsgit

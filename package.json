@@ -1,0 +1,21 @@
+{
+  "name": "useful-functions",
+  "version": "1.0.0",
+  "description": "Here we can post potentially useful functions for us to share and collaborate. Hopefully we wont have to reinvent the wheel so much.",
+  "main": "functions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.ibm.com:middleware-design/Useful-Functions.git"
+  },
+  "author": "Middleware FED",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.12.5",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "mocha": "^2.4.5"
+  }
+}
