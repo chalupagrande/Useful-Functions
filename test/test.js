@@ -3,7 +3,7 @@ var assert = chai.assert,
     should = chai.should()
 
 describe('Function Tests', function(){
-  describe('randomNum()', function(){
+  describe('#randomNum()', function(){
     var num, round
     before(function(){
       num = randomNum(1,10)
@@ -17,7 +17,7 @@ describe('Function Tests', function(){
     })
   })
 
-  describe('toggleClass()', function(){
+  describe('#toggleClass()', function(){
     var a;
     before(function(){
       a = document.createElement('div')
@@ -32,7 +32,7 @@ describe('Function Tests', function(){
     })
   })
 
-  describe('getDocHeight()', function(){
+  describe('#getDocHeight()', function(){
     var a;
     before(function(){
       a = getDocHeight()
@@ -45,7 +45,7 @@ describe('Function Tests', function(){
     })
   })
 
-  describe('formatDate() & formatTime()', function(){
+  describe('#formatDate() & formatTime()', function(){
     var date
     before(function(){
       date = formatDate(new Date("1/1/2012 14:23"))
@@ -55,14 +55,14 @@ describe('Function Tests', function(){
     })
   })
 
-  describe('removeSpaceMakeLowercase', function(){
+  describe('#removeSpaceMakeLowercase()', function(){
     it('should remove all spaces and case', function(){
       var s = removeSpaceMakeLowercase('Jamie Is Cool')
       assert.equal(s, 'jamie_is_cool', 'returned the wrong string')
     })
   })
 
-  describe('binarySearch', function(){
+  describe('#binarySearch()', function(){
     var array,result, compare,large =[];
     before(function(){
 
@@ -77,7 +77,7 @@ describe('Function Tests', function(){
         return a.num - b.num
       }
     })
-    it('should find the right number', function(){
+    it('should find the correct index number', function(){
       assert.equal(binarySearch(array, {num:15}, compare),11, "didnt find the number")
     })
     it('return -1 when the number is too large', function(){
@@ -89,7 +89,7 @@ describe('Function Tests', function(){
     it('return -1 when the number is not found', function(){
       assert.equal(binarySearch(array, {num:12}, compare), -1, "returned a value other than -1")
     })
-    it('should be able to search large arrays', function(){
+    it('should be able to search large arrays (10 million)', function(){
       assert.equal(binarySearch(large, 223),223, 'Took too long')
     })
   })

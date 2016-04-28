@@ -1,5 +1,4 @@
-/*
-  TOGGLE CLASS NAME
+/*  TOGGLE CLASS NAME
 
   arguments:
     el        -  node  - element to target
@@ -22,9 +21,7 @@ function toggleClass(el, className){
   }
 }
 
-/*
-  GET DOCUMENT HEIGHT
-
+/* GET DOCUMENT HEIG
   returns entire scrollable area of the document
 ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -39,9 +36,7 @@ function getDocHeight() {
 }
 
 
-/*
-  SCROLL TO ANCHOR POSITION
-    smoothly scrolls to position. 500ms
+/*  SCROLL TO ANCHOR POSITION    smoothly scrolls to position. 500ms
 
   arguments:
     name of element to scroll to
@@ -77,8 +72,7 @@ var scrollToAnchor = function(link) {
     }, mili);
 };
 
-/*
-  FORMAT DATE
+/*  FORMAT DATE
 
   Pass in a javascript date object and get a formated Date - Time
   DEPNENDS on formatTime()
@@ -87,8 +81,7 @@ function formatDate(date) {
   return (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear() + " - " + formatTime(date.getHours(), date.getMinutes());
 }
 
-/*
-  FORMAT TIME
+/*  FORMAT TIME
   Pass in hours, and minutes to get a formated string of the date.
 ~~~~~~~~~~~~~~~~~~~ */
 function formatTime(hour, minute) {
@@ -104,8 +97,7 @@ function formatTime(hour, minute) {
   return hour + ":" + minute + suffix;
 }
 
-/*
-  REMOVE SPACES - MAKE LOWERCASE
+/*  REMOVE SPACES - MAKE LOWERCASE
 
   this function is good for converting readable strings into classnames.
   Pass in a string, it returns a string with _ instead of " " and makes it lowercase
@@ -116,8 +108,7 @@ function removeSpaceMakeLowercase(s) {
   return s.split(' ').join('_').toLowerCase();
 }
 
-/*
-    BINARY SEARCH ALGORITHM
+/*    BINARY SEARCH ALGORITHM
 
     Searches a sorted array of values and finds the target element.
 
@@ -153,8 +144,7 @@ function binarySearch(array, target, compareFunc, min, max){
     }
   }
 }
-/*
-  HEX TO RGB
+/*  HEX TO RGB
 
   Converts a HEX string to an object of r,g,b values
 ~~~~~~~~~~~~~~~~~~ */
@@ -168,8 +158,7 @@ function hexToRGB(hex) {
     } : null;
 }
 
-/*
-  RGB TO LUMINANCE
+/*  RGB TO LUMINANCE
   arguments:
     obj =  {r: num, g: num, b: num}
 
@@ -179,8 +168,7 @@ function rgbToLuminance(obj){
   return (0.2126*obj.r + 0.7152*obj.g + 0.0722*obj.b)
 }
 
-/*
-  FIND TEXT COLOR
+/*  FIND TEXT COLOR
   Tells you whether the text color should be LIGHT or DARK due to accessibility standards.
 
   DEPENDS on:
@@ -200,13 +188,11 @@ function findTextColor(hex){
   return 1
 }
 
-/*
-  RANDOM NUM
+/*  RANDOM NUM
 
   returns a Random number between two values.
     use the round option if you want it to round that value. TRUE or FALSE
 ~~~~~~~~~~~~~~~~~*/
-
 function randomNum(min,max, round){
   if(min == undefined || max == undefined) return Math.random()
   var result = Math.random() * (max - min) + min;
