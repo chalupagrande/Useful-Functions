@@ -63,12 +63,34 @@ describe('Function Tests', function(){
   })
 
   describe('binarySearch', function(){
-    var result;
+    var array,result, compare,large =[];
     before(function(){
-      var array = [1,2,3,4,5,6,7,8,9,10]
+
+      for(var i = 0; i < 10000000; i++){
+        large.push(i)
+      }
+
+      array = [{num:1},{num:2},{num:3},{num:4},{num:5},{num:6},{num:8},
+               {num:9},{num:10},{num:11},{num:13},{num:15},{num:19},{num:20}]
+
+      compare = function(a,b){
+        return a.num - b.num
+      }
     })
-    it('WRITE THESE TESTS', function(){
-      //TODO
+    it('should find the right number', function(){
+      assert.equal(binarySearch(array, {num:15}, compare),11, "didnt find the number")
+    })
+    it('return -1 when the number is too large', function(){
+      assert.equal(binarySearch(array, {num:25}, compare), -1, "returned a value other than -1")
+    })
+    it('return -1 when the number is too small', function(){
+      assert.equal(binarySearch(array, {num:-2}, compare), -1, "returned a value other than -1")
+    })
+    it('return -1 when the number is not found', function(){
+      assert.equal(binarySearch(array, {num:12}, compare), -1, "returned a value other than -1")
+    })
+    it('should be able to search large arrays', function(){
+      assert.equal(binarySearch(large, 223),223, 'Took too long')
     })
   })
 })

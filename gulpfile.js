@@ -8,5 +8,5 @@ gulp.task('default', function(){
     }
   })
 
-  gulp.watch(["*.js", "test/test.js", "*.html"]).on('change', browserSync.reload)
+  gulp.watch(["js/*.js", "test/test.js", "*.html"]).on('change', browserSync.reload)
 })

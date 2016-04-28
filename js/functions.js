@@ -127,29 +127,29 @@ function removeSpaceMakeLowercase(s) {
         if a > b return +1
         if a < b return -1
     }
+
+    returns the INDEX of the element or -1
 */
-function binarySearch(array = [], target, compareFunc, min, max){
-  compareFunc = compareFunc || function(a,b){ return a == b ? 0 : a - b  }
+function binarySearch(array, target, compareFunc, min, max){
+  if(!Array.isArray(array) || !target) throw Error("Arguments were not defined properly")
+  compareFunc = compareFunc || function(a,b){ return a - b  }
   min = min || 0
   max = max == 0 || max ? max : array.length - 1
+  var half = min + Math.floor((max - min) /2)
 
-  // if(compareFunc(array[0] ,target) < 0 || compareFunc(array[array.length], target) > 0){
-  //   return null
-  // }
-  if(min >= max && compareFunc(array[max], target) != 0){
-    return null
+  if((min > max || max < min)){
+    return -1
   }else{
-    var half = min + Math.floor((max - min) /2)
     var result = compareFunc(array[half], target)
     if(result == 0){
-      return array[half]
-
+      return half
+    //move to the right
     }else if( result < 0){
       return binarySearch(array, target, compareFunc, half+1, max)
 
+    //move to the left
     }else if( result > 0){
       return binarySearch(array, target, compareFunc, min, half-1)
-
     }
   }
 }
