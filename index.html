@@ -12,16 +12,19 @@
     height:5000px;
   }
   .marker{
-    width:50px;
-    height:50px;
+    width:500px;
+    height:500px;
     background-color:black;
     position:absolute;
-    top:4500px;
-    left:4500px;
-
+    top:3500px;
+    left:3500px;
   }
 </style>
 <body>
+
+<button onclick=scrollToAnchor('.marker')>Test Scroll To Anchor</button>
+<button onclick=centerOnAnchor('.marker')>Test Center On Anchor</button>
+
 <div id="mocha"></div>
 
 <div class="marker"></div>

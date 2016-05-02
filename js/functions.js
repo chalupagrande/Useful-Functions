@@ -54,12 +54,25 @@ function getDocWidth(){
 ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 function scrollToAnchor(link) {
     var chosenElement   = document.querySelector( link ),
-        y               = chosenElement.getBoundingClientRect().top,
-        x               = chosenElement.getBoundingClientRect().left;
+        y               = window.scrollY + chosenElement.getBoundingClientRect().top,
+        x               = window.scrollX + chosenElement.getBoundingClientRect().left;
 
         scrollToPosition(x,y)
 };
 
+function centerOnAnchor(link) {
+    var chosenElement   = document.querySelector( link ),
+        y               = chosenElement.getBoundingClientRect().top,
+        x               = chosenElement.getBoundingClientRect().left,
+        width           = chosenElement.getBoundingClientRect().width,
+        height          = chosenElement.getBoundingClientRect().height,
+
+        targetX         = window.scrollX + (x+width/2)-(window.innerWidth/2),
+        targetY         = window.scrollY + (y+height/2)-(window.innerHeight/2);
+
+        console.log(targetX,targetY)
+        scrollToPosition(targetX, targetY)
+};
 
 
 function scrollToPosition(x,y){
