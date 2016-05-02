@@ -35,6 +35,15 @@ function getDocHeight() {
                   D.documentElement.clientHeight);
 }
 
+function getDocWidth(){
+  var D = document;
+  return Math.max(D.body.scrollWidth,
+                  D.documentElement.scrollWidth,
+                  D.body.offsetWidth,
+                  D.documentElement.offsetWidth,
+                  D.body.clientWidth,
+                  D.documentElement.clientWidth)
+}
 
 /*  SCROLL TO ANCHOR POSITION    smoothly scrolls to position. 500ms
 
@@ -43,34 +52,63 @@ function getDocHeight() {
 
   DEPENDS on getDocHeight()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-var scrollToAnchor = function(link) {
+function scrollToAnchor(link) {
     var chosenElement   = document.querySelector( link ),
-        getBoundsTop    = chosenElement.getBoundingClientRect().top,
-        duration        = 500,
-        mili            = 15,
-        scrollPosition  = window.scrollY,
-        scrollTarget    = scrollPosition + getBoundsTop,
-        scrollCount     = 0,
-        scrollStep      = Math.PI / (duration / mili),
-        scrollDirection = scrollTarget > scrollPosition ? 1 : -1,
-        cosParameter    = Math.abs(scrollTarget - scrollPosition) / 2,
-        docHeight       = getDocHeight(),
-        marginOfError   = Math.ceil( cosParameter - cosParameter * Math.cos(1 * scrollStep) ),
-        scrollMargin;
+        y               = chosenElement.getBoundingClientRect().top,
+        x               = chosenElement.getBoundingClientRect().left;
 
-
-    var scrollInterval = setInterval(function () {
-        var reachedEdge = scrollDirection > 0 ? window.scrollY + window.innerHeight >= docHeight - 1 : window.scrollY < 1;
-
-        if (Math.abs(scrollTarget - window.scrollY) > marginOfError && !reachedEdge) {
-            scrollCount += 1;
-            scrollMargin = cosParameter - cosParameter * Math.cos(scrollCount * scrollStep);
-            window.scrollTo(0, scrollPosition + scrollMargin * scrollDirection);
-        } else {
-            clearInterval(scrollInterval);
-        }
-    }, mili);
+        scrollToPosition(x,y)
 };
+
+
+
+function scrollToPosition(x,y){
+  var duration         = 500,
+      mili             = 15,
+      scrollY          = window.scrollY,
+      scrollX          = window.scrollX,
+      scrollCount      = 0,
+      scrollStep       = Math.PI / (duration / mili),
+      scrollXDirection = x > scrollX ? 1 : -1,
+      scrollYDirection = y > scrollY ? 1 : -1,
+      cosParameterX    = Math.abs(x - scrollX) / 2,
+      cosParameterY    = Math.abs(y - scrollY) / 2,
+      docHeight        = getDocHeight(),
+      docWidth         = getDocWidth(),
+      marginOfErrorY    = Math.ceil( cosParameterY - cosParameterY * Math.cos(1 * scrollStep) ),
+      marginOfErrorX    = Math.ceil( cosParameterX - cosParameterX * Math.cos(1 * scrollStep) ),
+      scrollMarginX,
+      scrollMarginY,
+      reachedEdgeX,
+      reachedEdgeY;
+
+
+  var scrollInterval = setInterval(function () {
+      if(scrollYDirection > 0){
+        reachedEdgeY = window.scrollY + window.innerHeight >= docHeight - 1
+      } else {
+        reachedEdgeY = window.scrollY < 1
+      }
+
+      if(scrollXDirection > 0){
+        reachedEdgeX = window.scrollX + window.innerWidth >= docWidth - 1
+      } else {
+        reachedEdgeX = window.scrollX < 1
+      }
+
+      if ((Math.abs(y - window.scrollY) > marginOfErrorY && !reachedEdgeY) ||
+          (Math.abs(x - window.scrollX) > marginOfErrorX && !reachedEdgeX)){
+            scrollCount += 1;
+            scrollMarginY = cosParameterY - cosParameterY * Math.cos(scrollCount * scrollStep);
+            scrollMarginX = cosParameterX - cosParameterX * Math.cos(scrollCount * scrollStep);
+            window.scrollTo(scrollX + scrollMarginX * scrollXDirection,
+                            scrollY + scrollMarginY * scrollYDirection);
+      } else {
+          clearInterval(scrollInterval);
+      }
+  }, mili);
+}
+
 
 /*  FORMAT DATE
 
