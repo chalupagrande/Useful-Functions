@@ -249,3 +249,51 @@ function randomNum(min,max, round){
   var result = Math.random() * (max - min) + min;
   return round ? Math.round(result) : result
 }
+
+/*  MAKE ARRAY
+
+  Turns Array LIKE objects into actual arrays.
+    such as `arguments` or `children`
+~~~~~~~~~~~~~~~~~*/
+function makeArray(arraLikeObject){
+  return Array.prototype.slice.call(arraLikeObject)
+}
+
+/*  HAS CLASS
+
+  Returns true if an element has a class
+~~~~~~~~~~~~~~~~~*/
+function hasClass(el, className){
+  if (el.classList)
+    return el.classList.contains(className);
+  else{
+    return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+  }
+}
+
+/* Slide & Get Toggle Slide Function
+
+arguments:
+  element = DOM Node
+  direction = -1 (slides left) || 1 (slides right)
+  duration = number of Miliseconds
+  callback = function to run when slide is finished
+
+getToggleSlideFunc returns a function that can then be called to toggle
+  a slide back and forth. your original direction will be bound.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+function slide(element, direction, duration =500, callback){
+  var durationInSecs = duration/1000 +'s'
+  var width = element.getBoundingClientRect().width
+  element.style.transition = 'transforwqm '+ durationInSecs
+  element.style.transform = 'translate('+(width*direction)+'px ,0)'
+  setTimeout(callback, duration)
+}
+
+function getToggleSlideFunc(element, direction, duration, callback){
+  var originalDirection = direction
+  return function(){
+    slide.apply(this, [element, direction, duration, callback])
+    direction = direction ? 0 : originalDirection
+  }
+}

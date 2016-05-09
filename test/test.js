@@ -93,4 +93,32 @@ describe('Function Tests', function(){
       assert.equal(binarySearch(large, 223),223, 'Took too long')
     })
   })
+
+  describe('#makeArray', function(){
+    var args;
+    var query;
+    before(function(){
+      (function(){
+        query = document.querySelector('body').children
+        args = arguments
+      })(1,2,3)
+    })
+
+    it('should create an Array from arguments', function(){
+      assert.equal(Array.isArray(makeArray(args)), true, 'did not return an Array object')
+    })
+    it('should create an Array from children', function(){
+      assert.equal(Array.isArray(makeArray(query)), true, 'did not return an Array object')
+    })
+  })
+  describe('#hasClass()', function(){
+    var el;
+    before(function(){
+      el = document.querySelector('.marker')
+    })
+
+    it('should return true for elements with class', function(){
+      assert.equal(hasClass(el,'marker'), true, 'returned false')
+    })
+  })
 })

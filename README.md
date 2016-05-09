@@ -18,6 +18,8 @@ Here we can post potentially useful functions for us to share and collaborate. H
   - rgbToLuminancegit
   - findTextColor
   - randomNum
+  - makeArray
+  - hasClass
 
 ####Variable List
 
