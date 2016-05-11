@@ -297,3 +297,97 @@ function getToggleSlideFunc(element, direction, duration, callback){
     direction = direction ? 0 : originalDirection
   }
 }
+
+
+/* Fire Event
+
+arguments:
+  node: DOM element
+  eventName: HTML event name
+
+fires an event on the node.
+NOTE: copied from stack overflow here:
+   http://stackoverflow.com/questions/2490825/how-to-trigger-event-in-javascript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+function fireEvent(node, eventName) {
+    // Make sure we use the ownerDocument from the provided node to avoid cross-window problems
+    var doc;
+    if (node.ownerDocument) {
+        doc = node.ownerDocument;
+    } else if (node.nodeType == 9){
+        // the node may be the document itself, nodeType 9 = DOCUMENT_NODE
+        doc = node;
+    } else {
+        throw new Error("Invalid node passed to fireEvent: " + node.id);
+    }
+    var event;
+    if (node.dispatchEvent) {
+        // Gecko-style approach (now the standard) takes more work
+        var eventClass = "";
+
+        // Different events have different event classes.
+        // If this switch statement can't map an eventName to an eventClass,
+        // the event firing is going to fail.
+
+        switch (eventName) {
+            // Dispatching of 'click' appears to not work correctly in Safari. Use 'mousedown' or 'mouseup' instead.
+            case "click":
+            case "mousedown":
+            case "mouseup":
+                eventClass = "MouseEvents";
+                break;
+
+            case "focus":
+            case "change":
+            case "blur":
+            case "select":
+                eventClass = "HTMLEvents";
+                break;
+
+            default:
+                throw Error("fireEvent: Couldn't find an event class for event '" + eventName + "'.");
+                break;
+        }
+        event = doc.createEvent(eventClass);
+
+        var bubbles = eventName == "change"
+        // All events created as bubbling and cancelable.
+        event.initEvent(eventName, bubbles, true);
+
+        // allow detection of synthetic events
+        event.synthetic = true;
+        node.dispatchEvent(event, true);
+    } else  if (node.fireEvent) {
+        // IE-old school style
+        event = doc.createEventObject();
+        // allow detection of synthetic events
+        event.synthetic = true;
+        node.fireEvent("on" + eventName, event);
+    }
+}
+
+/* ADD KEYBOARD NAVIGATION TO ELEMENTS
+
+  arguments:
+    selector = STRING: css query selector
+
+  will add a SPACE and ENTER keyboard lister to trigger a click
+  on the elements.
+
+  DEPENDENCIES:
+     fireEvent()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+function addKeyboardNavigationToElements(selector){
+  selector = selector || '[role="button"]'
+  var buttonNavs = document.querySelectorAll(selector)
+    makeArray(buttonNavs).forEach(function(el){
+    el.addEventListener('keydown', function(e){
+      var code = e.which
+      // 13 = Return, 32 = Space
+      if((code == 13) || (code == 32)){
+        fireEvent(this, 'click')
+      }
+    })
+  })
+}

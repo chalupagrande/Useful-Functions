@@ -7,6 +7,8 @@ Here we can post potentially useful functions for us to share and collaborate. H
   Fork -> `npm install` -> `$ gulp` -> edit -> pull request
 
 ####Function List
+  * indicates needs tests written
+
   - toggleClass
   - getDocHeight
   - scrollToAnchor
@@ -20,6 +22,8 @@ Here we can post potentially useful functions for us to share and collaborate. H
   - randomNum
   - makeArray
   - hasClass
+  - fireEvent *
+  - addKeyboardNaviationToElements *
 
 ####Variable List
 
