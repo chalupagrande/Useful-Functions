@@ -7,7 +7,7 @@ Here we can post potentially useful functions for us to share and collaborate. H
   Fork -> `npm install` -> `$ gulp` -> edit -> pull request
 
 ####Function List
-  * indicates needs tests written
+  \* indicates needs tests written
 
   - toggleClass
   - getDocHeight
