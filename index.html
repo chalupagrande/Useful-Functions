@@ -3,31 +3,37 @@
   <meta charset="UTF-8">
   <title>Useful Functions</title>
   <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
-<style>
-  body{
-    font-family:Helvetica;
-    width:5000px;
-    height:5000px;
-  }
-  .marker{
-    width:500px;
-    height:500px;
-    background-color:black;
-    position:absolute;
-    top:3500px;
-    left:3500px;
-  }
-</style>
 <body>
+<div class="wrapper">
+  <div class="tricks">
+    <h1>Other Tricks</h1>
+    <h2>Simple Tabbing Menu</h2>
+    <section class="trick-section">
+      <input type="text" placeholder="use this to start tabbing">
+      <div id="menu" class="tab-navigation">
+        <a class="tab-navigation__link" href="#p1" tabindex=0>Press Enter Skip to Part 1</a>
+        <a class="tab-navigation__link" href="#p2" tabindex=0>Press Enter Skip to Part 2</a>
+        <a class="tab-navigation__link" href="#p3" tabindex=0>Press Enter Skip to Part 3</a>
+      </div>
+      <p id="p1" tabindex="0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti accusantium, cupiditate repellat. Deleniti voluptas accusamus culpa nobis labore, accusantium dignissimos autem minima numquam tenetur, reprehenderit. Minus repudiandae veritatis molestias eaque.</p>
+      <p id="p2" tabindex="0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti accusantium, cupiditate repellat. Deleniti voluptas accusamus culpa nobis labore, accusantium dignissimos autem minima numquam tenetur, reprehenderit. Minus repudiandae veritatis molestias eaque.</p>
+      <p id="p3" tabindex="0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti accusantium, cupiditate repellat. Deleniti voluptas accusamus culpa nobis labore, accusantium dignissimos autem minima numquam tenetur, reprehenderit. Minus repudiandae veritatis molestias eaque.</p>
+      <a href="#menu"> Back to menu</a>
+    </section>
 
-<button onclick=scrollToAnchor('.marker')>Test Scroll To Anchor</button>
-<button onclick=centerOnAnchor('.marker')>Test Center On Anchor</button>
+    <h2>Smooth Scrolling</h2>
+    <section class="trick-section">
+      <button onclick=scrollToAnchor('.marker')>Test Scroll To Anchor</button>
+      <button onclick=centerOnAnchor('.marker')>Test Center On Anchor</button>
+    </section>
+  </div>
+  <div id="mocha"></div>
+</div>
 
-<div id="mocha"></div>
-
-<div class="marker"></div>
+<div class="marker">+</div>
 
 
 <script src="js/functions.js"></script>

@@ -28,4 +28,10 @@ Here we can post potentially useful functions for us to share and collaborate. H
 ####Variable List
 
   - weekdays
-  - monthsgit
+  - months
+  - HTML character codes
+
+####Other Tricks
+
+  - Simple Accessibility Aid
+  - Scroll To Anchor Example
