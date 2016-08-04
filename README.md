@@ -24,6 +24,10 @@ Here we can post potentially useful functions for us to share and collaborate. H
   - hasClass
   - fireEvent *
   - addKeyboardNaviationToElements *
+  - SOL Eventing
+  - ConvertHTMLToString
+  - ConvertCodeToString
+  - ConvertCode
 
 ####Variable List
 
