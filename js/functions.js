@@ -376,6 +376,7 @@ function fireEvent(node, eventName) {
 
   DEPENDENCIES:
      fireEvent()
+     makeArray()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 function addKeyboardNavigationToElements(selector){
@@ -391,3 +392,96 @@ function addKeyboardNavigationToElements(selector){
     })
   })
 }
+
+/* SOL Eventing
+
+  This is a micro eventing function. Allowing you to listen to
+  listen to events happening across your application.
+*/
+
+function SOL(){
+  this._events = {}
+
+  this.on = function(event, callback){
+    if(!this._events[event]){
+      this._events[event] = callback
+    } else {
+      throw new Error("SOL: An event already exists by that name.")
+    }
+  }
+
+  this.trigger = function(event, context, args = []){
+    var cb = this._events[event]
+    if(cb){
+      return cb.apply(context, args)
+    } else {
+      throw new Error("SOL: No event exists by that name.")
+    }
+  }
+}
+
+/* Coverting Code to String
+
+  This allows you to write regular HTML code, and then this function
+  will replace the with Strings rather than HTML Code.
+
+*/
+
+//Convert HTML to String
+function convertHTMLToString(el){
+  console.log(el)
+  var kids = Array.prototype.slice.call(el.children)
+  if(!kids) return false;
+
+  var string = kids.reduce((prev, cur)=>{
+    return prev + cur.outerHTML + '\n'
+  }, '')
+
+  var indentation = string.match(/^(\ +)/mg)
+  indentation = indentation[indentation.length-1].length
+  var result = string.replace(/^(\ +)/mg, function(a,b){
+    return ' '.repeat(a.length - indentation)
+  })
+
+  el.innerHTML = ''
+  el.innerText = result
+  return result
+}
+
+/* Translates JS or CSS to String */
+function convertCodeToString(el){
+  var string = el.innerText.trim()
+  var whitespace = string.match(/^(\ +)(?=\})/gm)
+  if(!whitespace) return false;
+
+  var indentation = whitespace.reduce(function(a,b){
+    return Math.min(a, b.length)
+  }, Infinity)
+
+  var result = string.replace(/^(\ +)/gm, function(a){
+    var level = a.length - indentation
+    level = level < 0 ? 0 : level
+    return ' '.repeat(level)
+  })
+
+  el.innerHTML = result
+  return result
+}
+
+/* Covert Code to String
+   This will call one of the two previous functions depending on the `code-type`
+   attribute on the code block.
+*/
+function convertCode(){
+  var codeBlocks = document.querySelectorAll('code')
+  codeBlocks = Array.prototype.slice.call(codeBlocks)
+  codeBlocks.forEach(function(el){
+    if(el.getAttribute('code-type') == 'html'){
+      return convertHTMLToString(el)
+    } else {
+      return convertCodeToString(el)
+    }
+  })
+}
+//call function for example
+convertCode()

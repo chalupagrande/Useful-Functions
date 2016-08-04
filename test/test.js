@@ -121,4 +121,24 @@ describe('Function Tests', function(){
       assert.equal(hasClass(el,'marker'), true, 'returned false')
     })
   })
+  describe('#SOL() Eventing', function(){
+    var sol;
+    before(function(){
+      sol = new SOL()
+      sol.on('hit', function(){
+        return 'hit triggered'
+      })
+
+    })
+    it('should trigger events', function(){
+      expect(sol.trigger.bind(sol, 'hit')).to.not.throw(Error)
+      assert.equal(sol.trigger('hit'), 'hit triggered', 'returned the wrong value')
+    })
+    it('should thow error when over-riding events', function(){
+      expect(sol.on.bind(sol, 'hit')).to.throw(Error)
+    })
+    it('should thow error when no event exists', function(){
+      expect(sol.trigger.bind(sol, 'bogus')).to.throw(Error)
+    })
+  })
 })

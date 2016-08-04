@@ -53,3 +53,12 @@
     width: auto;
     height: auto;
   }
+
+code {
+  display: block;
+  white-space: pre;
+  font-family: Courier;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}

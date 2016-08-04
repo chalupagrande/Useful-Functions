@@ -10,6 +10,7 @@
 <div class="wrapper">
   <div class="tricks">
     <h1>Other Tricks</h1>
+    <!-- Accessible Tabbing -->
     <h2>Simple Tabbing Menu</h2>
     <section class="trick-section">
       <input type="text" placeholder="use this to start tabbing">
@@ -24,12 +25,36 @@
       <a href="#menu"> Back to menu</a>
     </section>
 
+    <!-- Smooth Scroll -->
     <h2>Smooth Scrolling</h2>
     <section class="trick-section">
       <button onclick=scrollToAnchor('.marker')>Test Scroll To Anchor</button>
       <button onclick=centerOnAnchor('.marker')>Test Center On Anchor</button>
     </section>
+
+    <!-- Interpreting Code Blocks As Strings -->
+    <h2>Code Blocks</h2>
+    <section class="code-examples">
+        <code code-type="css">
+          code {
+            display: block;
+            white-space: pre;
+            font-family: Courier;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.1);
+          }
+        </code>
+        <p>Something</p>
+        <code code-type="html">
+          <ul>
+            <li><a href="http://codepen.io/jamieskinner/pen/zBaqdR">Question Mark Wiggle on onboarding</a></li>
+            <li><a href="http://codepen.io/jamieskinner/pen/BjeKeJ">Pulsing Numbered Dots</a></li>
+            <li><a href="http://codepen.io/jamieskinner/pen/dMNMQg">Response Time Graph Legend Reflow</a></li>
+          </ul>
+        </code>
+    </section>
   </div>
+
   <div id="mocha"></div>
 </div>
 
