@@ -1,58 +1,70 @@
-  body{
-    font-family:Helvetica;
-    width:5000px;
-    height:5000px;
-    font-size:16px;
-    font-weight:200;
-  }
-  .wrapper{
-    display:flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    width:100vw;
-  }
-  #mocha{
-    min-width:40vw;
-  }
-  .tricks{
-    width:40vw;
-    padding:1rem;
-  }
-  .trick-section{
-    padding:1rem;
-  }
-  .marker{
-    width:100px;
-    height:100px;
-    font-size: 10rem;
-    line-height: 4.3rem;
-    border-top: 0.8rem solid black;
-    border-left: 0.8rem solid black;
-    position:absolute;
-    top:3500px;
-    left:3500px;
-  }
+body {
+  font-family: Helvetica;
+  width: 5000px;
+  height: 5000px;
+  font-size: 16px;
+  font-weight: 200;
+  transition: background-color 1s;
+}
 
-  /* accessibility helper */
+.wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100vw;
+}
 
-  .tab-navigation {
-    position:relative;
-    height:1.5rem;
-  }
+#mocha {
+  min-width: 40vw;
+}
 
-  .tab-navigation__link{
-    position:absolute;
-    top:0;
-    left:0;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
+.tricks {
+  width: 40vw;
+  padding: 1rem;
+}
 
-  }
-  .tab-navigation__link:focus{
-    width: auto;
-    height: auto;
-  }
+section {
+  padding: 1rem;
+}
+section:before {
+  content: '--------------'
+}
+.title {
+  text-decoration: underline;
+}
+
+.marker {
+  width: 100px;
+  height: 100px;
+  font-size: 10rem;
+  line-height: 4.3rem;
+  border-top: 0.8rem solid black;
+  border-left: 0.8rem solid black;
+  position: absolute;
+  top: 3500px;
+  left: 3500px;
+}
+
+/* accessibility helper */
+
+.tab-navigation {
+  position: relative;
+  height: 1.5rem;
+}
+
+.tab-navigation__link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.tab-navigation__link:focus {
+  width: auto;
+  height: auto;
+}
 
 code {
   display: block;
@@ -61,4 +73,15 @@ code {
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.1);
   overflow: auto;
+}
+
+.cheat {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+.cheat > li:not(:first-child) {
+  margin-left: 0.5rem;
 }

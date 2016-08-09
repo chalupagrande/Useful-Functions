@@ -9,10 +9,9 @@
 <body>
 <div class="wrapper">
   <div class="tricks">
-    <h1>Other Tricks</h1>
     <!-- Accessible Tabbing -->
-    <h2>Simple Tabbing Menu</h2>
-    <section class="trick-section">
+    <section class="simple-tabbing">
+      <h2 class='title'>Simple Tabbing Menu</h2>
       <input type="text" placeholder="use this to start tabbing">
       <div id="menu" class="tab-navigation">
         <a class="tab-navigation__link" href="#p1" tabindex=0>Press Enter Skip to Part 1</a>
@@ -26,32 +25,49 @@
     </section>
 
     <!-- Smooth Scroll -->
-    <h2>Smooth Scrolling</h2>
-    <section class="trick-section">
+    <section class="smooth-scroll">
+      <h2 class='title'>Smooth Scrolling</h2>
       <button onclick=scrollToAnchor('.marker')>Test Scroll To Anchor</button>
       <button onclick=centerOnAnchor('.marker')>Test Center On Anchor</button>
     </section>
 
     <!-- Interpreting Code Blocks As Strings -->
-    <h2>Code Blocks</h2>
     <section class="code-examples">
-        <code code-type="css">
-          code {
-            display: block;
-            white-space: pre;
-            font-family: Courier;
-            padding: 1rem;
-            background-color: rgba(0, 0, 0, 0.1);
-          }
-        </code>
-        <p>Something</p>
-        <code code-type="html">
-          <ul>
-            <li><a href="http://codepen.io/jamieskinner/pen/zBaqdR">Question Mark Wiggle on onboarding</a></li>
-            <li><a href="http://codepen.io/jamieskinner/pen/BjeKeJ">Pulsing Numbered Dots</a></li>
-            <li><a href="http://codepen.io/jamieskinner/pen/dMNMQg">Response Time Graph Legend Reflow</a></li>
-          </ul>
-        </code>
+      <h2 class='title'>Code Blocks</h2>
+      <code code-type="css">
+        code {
+          display: block;
+          white-space: pre;
+          font-family: Courier;
+          padding: 1rem;
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+      </code>
+      <p>Some HTML Code</p>
+      <code code-type="html">
+        <ul>
+          <li><a href="http://codepen.io/jamieskinner/pen/zBaqdR">Question Mark Wiggle on onboarding</a></li>
+          <li><a href="http://codepen.io/jamieskinner/pen/BjeKeJ">Pulsing Numbered Dots</a></li>
+          <li><a href="http://codepen.io/jamieskinner/pen/dMNMQg">Response Time Graph Legend Reflow</a></li>
+        </ul>
+      </code>
+    </section>
+
+    <section class="cheat-codes">
+      <h2 class='title'>Cheat Codes</h2>
+      <h3>Type to Konami Code</h3>
+      <ul class="cheat">
+        <li>up</li>
+        <li>up</li>
+        <li>down</li>
+        <li>down</li>
+        <li>left</li>
+        <li>right</li>
+        <li>left</li>
+        <li>right</li>
+        <li>b</li>
+        <li>a</li>
+      </ul>
     </section>
   </div>
 
@@ -63,6 +79,7 @@
 
 <script src="js/functions.js"></script>
 <script src="js/variables.js"></script>
+<script src="js/demos.js"></script>
 
 <script src="node_modules/mocha/mocha.js"></script>
 <script src="node_modules/chai/chai.js"></script>

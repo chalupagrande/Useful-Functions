@@ -483,5 +483,61 @@ function convertCode(){
     }
   })
 }
-//call function for example
-convertCode()
+
+
+/* Cheat Code
+  Set a cheat code to excute when it is entered
+  Parameters:
+    code: [] of keys
+    cb: function to call when the code is entered
+    interval: # of miliseconds to type the code
+    correct: function to call on correct character entry
+    incorrect: function to call on incorrect character entry
+
+*/
+function cheatCode(code, cb, lag, correct, incorrect){
+  var watch = {
+    count: 0,
+    index: 0,
+    timerInterval: null,
+    stopperInterval: null,
+    lag: lag || 3000
+  }
+
+  document.addEventListener('keydown', function(e){
+    if(e.key == code[watch.index]){
+      if(!watch.timerInterval){ watch.timerInterval = timer()}
+      if(!watch.stopperInterval){ watch.stopperInterval = stopper()}
+      watch.index += 1
+      if(correct) correct()
+      if(watch.index >= code.length){
+        cb()
+        reset()
+      }
+    } else {
+      reset()
+      if(incorrect) incorrect()
+    }
+  })
+
+  function timer(){
+    return setInterval(function(){
+      watch.count += 20
+    }, 20)
+  }
+  function stopper(){
+    return setInterval(function(){
+      if(watch.count >= watch.lag){
+        reset()
+      }
+    }, watch.lag)
+  }
+  function reset(){
+    clearInterval(watch.timerInterval)
+    clearInterval(watch.stopperInterval)
+    watch.timerInterval = null
+    watch.stopperInterval = null
+    watch.index = 0
+    watch.count = 0
+  }
+}
