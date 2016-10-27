@@ -1,3 +1,4 @@
-node_modules
+node_modules/*
+!node_modules/mocha
+node_modules/mocha/*
 !node_modules/mocha/mocha.js
-!node_modules/chai/chai.js
