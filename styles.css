@@ -26,7 +26,7 @@ body {
 section {
   padding: 1rem;
 }
-section:before {
+section:not(:first-child):before {
   content: '--------------'
 }
 .title {
