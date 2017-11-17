@@ -137,16 +137,18 @@ function formatDate(date) {
 ~~~~~~~~~~~~~~~~~~~ */
 function formatTime(hour, minute) {
   var isPM = false;
-  if (hour > 12) {
+  if (hour >= 12) {
     hour %= 12;
     isPM = true;
-  }
+  } 
+  if(hour == 0) hour = 12
   if (minute < 10) {
     minute = "0" + minute;
   }
   var suffix = isPM ? "pm" : "am";
   return hour + ":" + minute + suffix;
 }
+
 
 /*  REMOVE SPACES - MAKE LOWERCASE
 
